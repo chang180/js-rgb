@@ -140,7 +140,7 @@
         function minus() {
             r = parseInt(r, 16);
             r--;
-            if (r > 255) r = 255;
+            if (r < 0) r = 0;
             rr = (255 - r).toString(16);
             r = r.toString(16).toUpperCase();
             if (rr.length == 1) rr = "0" + rr;
@@ -149,7 +149,7 @@
 
             g = parseInt(g, 16);
             g--;
-            if (g > 255) g = 255;
+            if (g <0 ) g =0;
             rg = (255 - g).toString(16);
             g = g.toString(16).toUpperCase();
             if (rg.length == 1) rg = "0" + rg;
@@ -158,7 +158,7 @@
 
             b = parseInt(b, 16);
             b--;
-            if (b > 255) b = 255;
+            if (b <0) b = 0;
             rb = (255 - b).toString(16);
             b = b.toString(16).toUpperCase();
             if (rb.length == 1) rb = "0" + rb;
