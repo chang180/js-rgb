@@ -45,6 +45,10 @@
         let g = Math.ceil(Math.random() * 255);
         let b = Math.ceil(Math.random() * 255);
 
+        rangeRed.value = r;
+        rangeGreen.value = g;
+        rangeBlue.value = b;
+
         let rr = (255 - r).toString(16);
         if (rr.length == 1) rr = "0" + rr;
         let rg = (255 - g).toString(16);
@@ -219,25 +223,23 @@
             document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
             console.log(`#${rr}${rg}${rb}`);
 
-            document.getElementById("square").textContent = `${r}${g}${b}`;
+            document.getElementById("square").textContent = `#${r}${g}${b}`;
             console.log(`#${r}${g}${b}`);
 
 
             return;
         }
 
-        rangeRed.value = r;
-        rangeGreen.value = g;
-        rangeBlue.value = b;
+       
 
+        
+        document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
+        document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
+        document.getElementById("square").textContent = `#${r}${g}${b}`;
+        
         document.getElementById('rangeRed').addEventListener('input', colorRange);
         document.getElementById('rangeGreen').addEventListener('input', colorRange);
         document.getElementById('rangeBlue').addEventListener('input', colorRange);
-
-        document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
-        document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
-        document.getElementById("square").textContent = `${r}${g}${b}`;
-
 
     </script>
 
