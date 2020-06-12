@@ -69,7 +69,7 @@
         // console.log(`${r},${g},${b}`);
 
         function red() {
-            r = Math.floor(prompt("請輸入紅值：(0~255)", r));
+            r = Math.floor(prompt("請輸入紅值：(0~255)", parseInt(r,16)));
             rr = (255 - r).toString(16);
             if (rr.length == 1) rr = "0" + rr;
             // console.log(r);
@@ -88,7 +88,7 @@
         }
 
         function green() {
-            g = Math.floor(prompt("請輸入綠值：(0~255)", g));
+            g = Math.floor(prompt("請輸入綠值：(0~255)", parseInt(g,16)));
             rg = (255 - g).toString(16);
             if (rg.length == 1) rg = "0" + rg;
             if (g > 255 || g < 0 || isNaN(g)) green();
@@ -105,7 +105,7 @@
         }
 
         function blue() {
-            b = Math.floor(prompt("請輸入藍值：(0~255)", b));
+            b = Math.floor(prompt("請輸入藍值：(0~255)", parseInt(b,16)));
             rb = (255 - b).toString(16);
             if (rb.length == 1) rb = "0" + rb;
             if (b > 255 || b < 0 || isNaN(b)) blue();
@@ -243,11 +243,11 @@
                 rangeGreen.value = g;
                 rangeBlue.value = b;
 
-                let rr = (255 - r).toString(16);
+                rr = (255 - r).toString(16);
                 if (rr.length == 1) rr = "0" + rr;
-                let rg = (255 - g).toString(16);
+                rg = (255 - g).toString(16);
                 if (rg.length == 1) rg = "0" + rg;
-                let rb = (255 - b).toString(16);
+                rb = (255 - b).toString(16);
                 if (rb.length == 1) rb = "0" + rb;
 
 
@@ -260,6 +260,7 @@
                 document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
                 document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
                 document.getElementById("square").textContent = `#${r}${g}${b}`;
+                console.log(`#${r}${g}${b}`);
             }, 50);
         }
 
