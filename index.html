@@ -20,18 +20,18 @@
     <div class="container d-flex flex-column">
         <div class="square text-center d-flex justify-content-center align-items-center border display-1 m-3"
             id="square"></div>
-        <div class="btn-group col flex-column" id="colorRange">
+        <div class="col flex-column" id="colorRange">
             <div>
                 <button id="rr" class="btn m-1 btn-danger col-1" onclick="red()">R</button>
-                <input class="col-6" id="rangeRed" type="range" min="0" max="255">
+                <input class="col-5 p-0" id="rangeRed" type="range" min="0" max="255">
             </div>
             <div>
                 <button id="gg" class="btn m-1 btn-success col-1" onclick="green()">G</button>
-                <input class="col-6" id="rangeGreen" type="range" min="0" max="255">
+                <input class="col-5 p-0" id="rangeGreen" type="range" min="0" max="255">
             </div>
             <div>
                 <button id="bb" class="btn m-1 btn-primary col-1" onclick="blue()">B</button>
-                <input class="col-6" id="rangeBlue" type="range" min="0" max="255">
+                <input class="col-5 p-0" id="rangeBlue" type="range" min="0" max="255">
             </div>
         </div>
         <div class="btn-group col">
@@ -69,7 +69,7 @@
         // console.log(`${r},${g},${b}`);
 
         function red() {
-            r = Math.floor(prompt("請輸入紅值：(0~255)", "0"));
+            r = Math.floor(prompt("請輸入紅值：(0~255)", r));
             rr = (255 - r).toString(16);
             if (rr.length == 1) rr = "0" + rr;
             // console.log(r);
@@ -88,7 +88,7 @@
         }
 
         function green() {
-            g = Math.floor(prompt("請輸入綠值：(0~255)", "0"));
+            g = Math.floor(prompt("請輸入綠值：(0~255)", g));
             rg = (255 - g).toString(16);
             if (rg.length == 1) rg = "0" + rg;
             if (g > 255 || g < 0 || isNaN(g)) green();
@@ -105,7 +105,7 @@
         }
 
         function blue() {
-            b = Math.floor(prompt("請輸入藍值：(0~255)", "0"));
+            b = Math.floor(prompt("請輸入藍值：(0~255)", b));
             rb = (255 - b).toString(16);
             if (rb.length == 1) rb = "0" + rb;
             if (b > 255 || b < 0 || isNaN(b)) blue();
