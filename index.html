@@ -20,18 +20,18 @@
     <div class="container d-flex flex-column">
         <div class="square text-center d-flex justify-content-center align-items-center border display-1 m-3"
             id="square"></div>
-        <div class="btn-group col flex-column" id="changeColor">
+        <div class="btn-group col flex-column" id="colorRange">
             <div>
                 <button id="rr" class="btn m-1 btn-danger col-1" onclick="red()">R</button>
-                <input class="range col-11>" id="rangeRed" type="range" min="0" max="255">
+                <input class="col-6" id="rangeRed" type="range" min="0" max="255">
             </div>
             <div>
                 <button id="gg" class="btn m-1 btn-success col-1" onclick="green()">G</button>
-                <input class="range col-11>" id="rangeGreen" type="range" min="0" max="255">
+                <input class="col-6" id="rangeGreen" type="range" min="0" max="255">
             </div>
             <div>
                 <button id="bb" class="btn m-1 btn-primary col-1" onclick="blue()">B</button>
-                <input class="range col-11>" id="rangeBlue" type="range" min="0" max="255">
+                <input class="col-6" id="rangeBlue" type="range" min="0" max="255">
             </div>
         </div>
         <div class="btn-group col">
@@ -69,11 +69,12 @@
             // console.log(r);
             if (r > 255 || r < 0 || isNaN(r)) red();
             else {
+                rangeRed.value = r;
                 r = r.toString(16).toUpperCase();
                 if (r.length == 1) r = "0" + r;
                 console.log(r);
                 document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
-                document.getElementById("square").textContent = `${r}${g}${b}`;
+                document.getElementById("square").textContent = `#${r}${g}${b}`;
                 document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
                 // console.log(`${r}${g}${b}`);
             }
@@ -86,10 +87,11 @@
             if (rg.length == 1) rg = "0" + rg;
             if (g > 255 || g < 0 || isNaN(g)) green();
             else {
+                rangeGreen.value = g;
                 g = g.toString(16).toUpperCase();
                 if (g.length == 1) g = "0" + g;
                 document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
-                document.getElementById("square").textContent = `${r}${g}${b}`;
+                document.getElementById("square").textContent = `#${r}${g}${b}`;
                 document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
                 // console.log(`${r}${g}${b}`);
             }
@@ -102,10 +104,11 @@
             if (rb.length == 1) rb = "0" + rb;
             if (b > 255 || b < 0 || isNaN(b)) blue();
             else {
+                rangeBlue.value = b;
                 b = b.toString(16).toUpperCase();
                 if (b.length == 1) b = "0" + b;
                 document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
-                document.getElementById("square").textContent = `${r}${g}${b}`;
+                document.getElementById("square").textContent = `#${r}${g}${b}`;
                 document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
                 // console.log(`${r}${g}${b}`);
             }
@@ -117,6 +120,7 @@
             r = parseInt(r, 16);
             r++;
             if (r > 255) r = 255;
+            rangeRed.value = r;
             rr = (255 - r).toString(16);
             r = r.toString(16).toUpperCase();
             if (rr.length == 1) rr = "0" + rr;
@@ -126,6 +130,7 @@
             g = parseInt(g, 16);
             g++;
             if (g > 255) g = 255;
+            rangeGreen.value = g;
             rg = (255 - g).toString(16);
             g = g.toString(16).toUpperCase();
             if (rg.length == 1) rg = "0" + rg;
@@ -135,6 +140,7 @@
             b = parseInt(b, 16);
             b++;
             if (b > 255) b = 255;
+            rangeBlue.value = b;
             rb = (255 - b).toString(16);
             b = b.toString(16).toUpperCase();
             if (rb.length == 1) rb = "0" + rb;
@@ -142,7 +148,7 @@
 
             document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
             document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
-            document.getElementById("square").textContent = `${r}${g}${b}`;
+            document.getElementById("square").textContent = `#${r}${g}${b}`;
 
             return;
         }
@@ -150,6 +156,7 @@
             r = parseInt(r, 16);
             r--;
             if (r < 0) r = 0;
+            rangeRed.value = r;
             rr = (255 - r).toString(16);
             r = r.toString(16).toUpperCase();
             if (rr.length == 1) rr = "0" + rr;
@@ -158,7 +165,8 @@
 
             g = parseInt(g, 16);
             g--;
-            if (g <0 ) g =0;
+            if (g < 0) g = 0;
+            rangeGreen.value = g;
             rg = (255 - g).toString(16);
             g = g.toString(16).toUpperCase();
             if (rg.length == 1) rg = "0" + rg;
@@ -167,7 +175,8 @@
 
             b = parseInt(b, 16);
             b--;
-            if (b <0) b = 0;
+            if (b < 0) b = 0;
+            rangeBlue.value = b;
             rb = (255 - b).toString(16);
             b = b.toString(16).toUpperCase();
             if (rb.length == 1) rb = "0" + rb;
@@ -175,10 +184,49 @@
 
             document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
             document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
-            document.getElementById("square").textContent = `${r}${g}${b}`;
+            document.getElementById("square").textContent = `#${r}${g}${b}`;
 
             return;
         }
+
+        function colorRange() {
+            // console.log(r,g,b);
+            // r = parseInt(r, 16);
+            r = rangeRed.value;
+            rr = (255 - r).toString(16);
+            r = r.toString(16).toUpperCase();
+
+            // g = parseInt(g, 16);
+            g = rangeGreen.value;
+            rg = (255 - g).toString(16);
+            g = g.toString(16).toUpperCase();
+
+            // b = parseInt(b, 16);
+            b = rangeBlue.value;
+            rb = (255 - b).toString(16);
+            b=b.toString(16).toUpperCase();
+            // console.log(`#${r}${g}${b}`);
+
+
+            document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
+            
+            document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
+            // console.log(`#${rr}${rg}${rb}`);
+            
+            document.getElementById("square").textContent = `${r}${g}${b}`;
+            // console.log(`#${r}${g}${b}`);
+            
+
+            return;
+        }
+
+        rangeRed.value = r;
+        rangeGreen.value = g;
+        rangeBlue.value = b;
+
+        document.getElementById('rangeRed').addEventListener('input', colorRange);
+        document.getElementById('rangeGreen').addEventListener('input', colorRange);
+        document.getElementById('rangeBlue').addEventListener('input', colorRange);
 
         document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
         document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
