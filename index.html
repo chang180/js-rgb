@@ -35,9 +35,11 @@
             </div>
         </div>
         <div class="btn-group col">
-            <button class="btn btn-warning col-1 m-1" id="add" onclick="add()">+</button>
-            <button class="btn btn-secondary col-1 m-1" id="minus" onclick="minus()">-</button>
-            <button class="btn btn-info col-1 m-1" id="random" onclick="window.location.reload();">?</button>
+            <!-- <button class="btn btn-warning col-1 m-1" id="add" onclick="add()">+</button> -->
+            <button class="btn btn-warning col-1 m-1" id="add">+</button>
+            <button class="btn btn-secondary col-1 m-1" id="minus">-</button>
+            <!-- <button class="btn btn-info col-1 m-1" id="random" onclick="window.location.reload();">?</button> -->
+            <button class="btn btn-info col-1 m-1" id="random">?</button>
         </div>
     </div>
     <script>
@@ -153,6 +155,7 @@
             document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
             document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
             document.getElementById("square").textContent = `#${r}${g}${b}`;
+            // console.log(`#${r}${g}${b}`);
 
             return;
         }
@@ -229,7 +232,40 @@
 
             return;
         }
+        let randomC;
+        function shuffleColor() {
+            randomC = setInterval(() => {
+                r = Math.ceil(Math.random() * 255);
+                g = Math.ceil(Math.random() * 255);
+                b = Math.ceil(Math.random() * 255);
 
+                rangeRed.value = r;
+                rangeGreen.value = g;
+                rangeBlue.value = b;
+
+                let rr = (255 - r).toString(16);
+                if (rr.length == 1) rr = "0" + rr;
+                let rg = (255 - g).toString(16);
+                if (rg.length == 1) rg = "0" + rg;
+                let rb = (255 - b).toString(16);
+                if (rb.length == 1) rb = "0" + rb;
+
+
+                r = r.toString(16).toUpperCase();
+                if (r.length == 1) r = "0" + r;
+                g = g.toString(16).toUpperCase();
+                if (g.length == 1) g = "0" + g;
+                b = b.toString(16).toUpperCase();
+                if (b.length == 1) b = "0" + b;
+                document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
+                document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
+                document.getElementById("square").textContent = `#${r}${g}${b}`;
+            }, 50);
+        }
+
+        function stopShuffle() {
+            clearInterval(randomC);
+        }
 
 
 
@@ -240,6 +276,38 @@
         document.getElementById('rangeRed').addEventListener('input', colorRange);
         document.getElementById('rangeGreen').addEventListener('input', colorRange);
         document.getElementById('rangeBlue').addEventListener('input', colorRange);
+
+        document.getElementById('random').addEventListener('mousedown', shuffleColor);
+        document.getElementById('random').addEventListener('mouseup', stopShuffle);
+        document.getElementById('random').addEventListener('mouseout', stopShuffle);
+
+        let plus;
+        let addB = document.getElementById('add');
+        addB.onmousedown = () => {
+            plus = setInterval(() => {
+                add();
+            }, 50);
+        };
+        addB.onmouseup = () => {
+            clearInterval(plus);
+        };
+        addB.onmouseout = () => {
+            clearInterval(plus);
+        };
+
+        let mins;
+        let minsB = document.getElementById('minus');
+        minsB.onmousedown = () => {
+            mins = setInterval(() => {
+                minus();
+            }, 50);
+        };
+        minsB.onmouseup = () => {
+            clearInterval(mins);
+        };
+        minsB.onmouseout = () => {
+            clearInterval(mins);
+        };
 
     </script>
 
