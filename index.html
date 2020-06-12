@@ -192,30 +192,36 @@
         function colorRange() {
             // console.log(r,g,b);
             // r = parseInt(r, 16);
-            r = rangeRed.value;
+            r = rangeRed.value * 1;
             rr = (255 - r).toString(16);
             r = r.toString(16).toUpperCase();
 
             // g = parseInt(g, 16);
-            g = rangeGreen.value;
+            g = rangeGreen.value * 1;
             rg = (255 - g).toString(16);
             g = g.toString(16).toUpperCase();
 
             // b = parseInt(b, 16);
-            b = rangeBlue.value;
+            b = rangeBlue.value * 1;
             rb = (255 - b).toString(16);
-            b=b.toString(16).toUpperCase();
-            // console.log(`#${r}${g}${b}`);
+            b = b.toString(16).toUpperCase();
+            // console.log(r,g,b);
+            if (rr.length == 1) rr = "0" + rr;
+            if (r.length == 1) r = "0" + r;
+            if (rg.length == 1) rg = "0" + rg;
+            if (g.length == 1) g = "0" + g;
+            if (rb.length == 1) rb = "0" + rb;
+            if (b.length == 1) b = "0" + b;
 
 
             document.getElementById("square").style.backgroundColor = `#${r}${g}${b}`;
-            
+
             document.getElementById("square").style.color = `#${rr}${rg}${rb}`;
-            // console.log(`#${rr}${rg}${rb}`);
-            
+            console.log(`#${rr}${rg}${rb}`);
+
             document.getElementById("square").textContent = `${r}${g}${b}`;
-            // console.log(`#${r}${g}${b}`);
-            
+            console.log(`#${r}${g}${b}`);
+
 
             return;
         }
